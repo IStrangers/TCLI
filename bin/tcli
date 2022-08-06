@@ -1,0 +1,60 @@
+#! /usr/bin/env node
+
+const packageJSON = require("../package.json")
+const program = require("commander");
+const chalk = require("chalk");
+
+function getCmdArgs(cmd) {
+  const args = {}
+  cmd.options && cmd.options.forEach(item => {
+    const key = item.long.slice(2)
+    if(cmd[key]) {
+      args[key] = cmd[key]
+    }
+  })
+  return args
+}
+
+
+//create
+program
+  .command(`create <app-name>`)
+  .description(`create a new project`)
+  .option(`-f, --force`,`overwrite target directory if it exists`)
+  .action((name,cmd) => {
+    const args = getCmdArgs(cmd)
+    require("../lib/create")(name,args)
+  })
+
+//config
+program
+  .command(`config [value]`)
+  .description(`inspect and modify the config`)
+  .option(`-g, --get <path>`,`get value form option`)
+  .option(`-s, --set <path>`,`<value>`)
+  .option(`-d, --delete <path>`,`delete option form config`)
+  .action((value,cmd) => {
+    const args = getCmdArgs(cmd)
+
+  })
+
+//ui
+program
+  .command(`ui`)
+  .description(`start and open tcli ui`)
+  .option(`-p, --port <port>`,`Port used for the UI Server`)
+  .action((cmd) => {
+    const args = getCmdArgs(cmd)
+
+  })
+
+program
+  .version(`tcli ${packageJSON.version}`)
+  .usage(`<command> [options]`)
+  .on(`--help`,() => {
+    console.log()
+    console.log(`Run ${chalk.cyan(`tcli <command> --help`)} show details`)
+    console.log()
+  })
+  .parse(process.argv)
+

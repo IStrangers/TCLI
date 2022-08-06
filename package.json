@@ -1,0 +1,25 @@
+{
+  "name": "tcli",
+  "version": "1.0.0",
+  "description": "模板脚手架",
+  "main": "index.js",
+  "bin": "./bin/tcli",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/QQXQQ/TCLI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^4.0.0",
+    "commander": "^9.4.0",
+    "download-git-repo": "^3.0.2",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^8.0.0",
+    "ora": "^5.0.0"
+  }
+}
